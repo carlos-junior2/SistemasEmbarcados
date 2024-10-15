@@ -1,0 +1,15 @@
+main
+	escreveTraco
+	escrevePonto
+	intervalo
+	numero2
+		escrevePonto
+		escreveTraco
+	numero0
+		escreveTraco
+	numero1
+		escrevePonto
+		escreveTraco
+	numero8
+		escreveTraco
+		escrevePonto
