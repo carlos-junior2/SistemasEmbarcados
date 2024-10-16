@@ -1,5 +1,5 @@
-#line 1 "C:/Users/junin/OneDrive/Área de Trabalho/UFLA/2024-2/Sistemas Embarcados/codigomorse.c"
-#line 16 "C:/Users/junin/OneDrive/Área de Trabalho/UFLA/2024-2/Sistemas Embarcados/codigomorse.c"
+#line 1 "C:/Users/carlos.junior2/Desktop/codigomorse/codigomorse.c"
+#line 16 "C:/Users/carlos.junior2/Desktop/codigomorse/codigomorse.c"
 void escrevePonto(){
  portd = 1;
  delay_ms(200);
@@ -8,8 +8,9 @@ void escrevePonto(){
 
 
 void escreveTraco(){
- portd = 0;
+ portd = 1;
  delay_ms(600);
+ portd = 0;
 }
 
 

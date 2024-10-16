@@ -1,5 +1,5 @@
-#line 1 "C:/Users/junin/OneDrive/Área de Trabalho/UFLA/2024-2/Sistemas Embarcados/SistemasEmbarcados/piscapisca/piscapisca.c"
-#line 15 "C:/Users/junin/OneDrive/Área de Trabalho/UFLA/2024-2/Sistemas Embarcados/SistemasEmbarcados/piscapisca/piscapisca.c"
+#line 1 "C:/Users/carlos.junior2/Desktop/piscapisca/piscapisca.c"
+#line 15 "C:/Users/carlos.junior2/Desktop/piscapisca/piscapisca.c"
 void main ()
 {
 
