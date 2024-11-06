@@ -6,8 +6,10 @@
 **     Ao apertar o pushbutton RB1, é mostrado o número de       **
 **     matrícula do aluno em código morse no LED1 PORTD          **
 **                                                               **
+**     Aluno: Carlos Magno do Nascimento Junior                  **
+**                                                               **
 **     Arquivo: codigomorse.c                                    **
-**     Compilador : MikroC PRO PIC v6.4.0                        **
+**     Compilador : MikroC PRO PIC v7.2.0                        **
 **                                                               **
 **     UFLA - Lavras /MG - 16/10/2024                            **
 ******************************************************************/
@@ -21,8 +23,9 @@ void escrevePonto(){
 
 //função para mostrar um traço em código morse
 void escreveTraco(){
-     portd = 0;
+     portd = 1;
      delay_ms(600);
+     portd = 0;
 }
 
 //função para dar intervalo entre um caracter e outro
@@ -118,7 +121,7 @@ void main ()
         while (1)
         {
                 // Le o estado do push button conectado ao pinon RB0.
-                // Caso esteja pressionado (valor = 0), executa laco.
+                // Caso seja pressionado (valor = 0), executa bloco.
                 if (portb.rb0 == 0)
                 {
                      //Iniciais: CMNJ
@@ -168,6 +171,9 @@ void main ()
                      //Traço
                      escreveTraco();
                  }
+                 
+                 // Le o estado do push button conectado ao pinon RB1.
+                // Caso seja pressionado (valor = 0), executa bloco.
                  else if (portb.rb1 == 0)
                  {
                       //Matricula 201810088
