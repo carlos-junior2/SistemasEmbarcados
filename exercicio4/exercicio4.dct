@@ -86,6 +86,7 @@ an6
 an6_bit
 an7
 an7_bit
+ascendeled
 b0
 b1
 b2
@@ -445,7 +446,6 @@ lcd_out
 lcd_out_cp
 lcd_rs
 lcd_rs_direction
-lcdsenha
 longint2double
 longjmp
 longword2double
@@ -469,6 +469,11 @@ lvdl2_bit
 lvdl3
 lvdl3_bit
 main
+memchr
+memcmp
+memcpy
+memmove
+memset
 mul_16x16_s
 mul_16x16_u
 mul_32x32_fp
@@ -766,6 +771,7 @@ sdo
 sdo_bit
 sen
 sen_bit
+senhadigitada
 setfdz32
 setfov32
 setfun32
@@ -831,6 +837,20 @@ stkptr4
 stkptr4_bit
 stkunf
 stkunf_bit
+strcat
+strchr
+strcmp
+strcpy
+strcspn
+strlen
+strncat
+strncmp
+strncpy
+strpbrk
+strrchr
+strspn
+strstr
+strtok
 sub_32x32_fp
 swap
 swdte

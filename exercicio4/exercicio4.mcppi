@@ -43,11 +43,10 @@ Count=0
 [Useses]
 File0=Lcd
 File1=Lcd_Constants
-Count=2
+File2=C_String
+Count=3
 [EXPANDED_NODES]
-0=exercicio4.mcppi
-1=Sources
-Count=2
+Count=0
 [LIB_EXPANDED_NODES]
-0=mikroE Libraries
+1=System Libraries
 Count=1

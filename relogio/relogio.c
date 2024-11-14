@@ -6,7 +6,7 @@
 **      segurar o pushbutton RB0, é possível alterar os         *
 **      segundos, ao segurar o pushbutton RB1, é possível       *
 **      alterar os minutos e ao apertar o pushbutton RB2,       *
-**      é possível alterar as horas.				*
+**      é possível alterar as horas.                                *
 **                                                              *
 ** Arquivo: relogio.c                                           *
 ** Compilador: Mikro C PRO PIC v.6.4.0                          *
@@ -81,16 +81,16 @@ void main()
         int horas = 15, minutos = 5, segundos = 50; //inicialização das variáveis
         char horaFormatada[9]; // Array para armazenar "HH:MM:SS" + '\0'
         
-	ADCON0  = 0x00;        // Configura todos pinos das portas para digital e
-   	ADCON1  = 0x0F;       // desabilita o conversor A/D
-   	trisb = 7;
+        ADCON0  = 0x00;        // Configura todos pinos das portas para digital e
+           ADCON1  = 0x0F;       // desabilita o conversor A/D
+           trisb = 7;
 
-   	Lcd_Init();                  	//Inicializa o Display
-   	delay_ms(100);
-   	Lcd_Cmd(_LCD_CLEAR);         	//Limpa o Display
-   	delay_ms(100);
-   	Lcd_Cmd(_LCD_CURSOR_OFF);    	//Desabilita o cursor
-   	delay_ms(100);
+           Lcd_Init();                          //Inicializa o Display
+           delay_ms(100);
+           Lcd_Cmd(_LCD_CLEAR);                 //Limpa o Display
+           delay_ms(100);
+           Lcd_Cmd(_LCD_CURSOR_OFF);            //Desabilita o cursor
+           delay_ms(100);
         
         //Loop infinito
         while(1){

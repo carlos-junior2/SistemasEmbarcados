@@ -241,7 +241,7 @@ _main:
 ;relogio.c,86 :: 		trisb = 7;
 	MOVLW       7
 	MOVWF       TRISB+0 
-;relogio.c,88 :: 		Lcd_Init();                  	//Inicializa o Display
+;relogio.c,88 :: 		Lcd_Init();                          //Inicializa o Display
 	CALL        _Lcd_Init+0, 0
 ;relogio.c,89 :: 		delay_ms(100);
 	MOVLW       2
@@ -258,7 +258,7 @@ L_main6:
 	DECFSZ      R11, 1, 1
 	BRA         L_main6
 	NOP
-;relogio.c,90 :: 		Lcd_Cmd(_LCD_CLEAR);         	//Limpa o Display
+;relogio.c,90 :: 		Lcd_Cmd(_LCD_CLEAR);                 //Limpa o Display
 	MOVLW       1
 	MOVWF       FARG_Lcd_Cmd_out_char+0 
 	CALL        _Lcd_Cmd+0, 0
@@ -277,7 +277,7 @@ L_main7:
 	DECFSZ      R11, 1, 1
 	BRA         L_main7
 	NOP
-;relogio.c,92 :: 		Lcd_Cmd(_LCD_CURSOR_OFF);    	//Desabilita o cursor
+;relogio.c,92 :: 		Lcd_Cmd(_LCD_CURSOR_OFF);            //Desabilita o cursor
 	MOVLW       12
 	MOVWF       FARG_Lcd_Cmd_out_char+0 
 	CALL        _Lcd_Cmd+0, 0

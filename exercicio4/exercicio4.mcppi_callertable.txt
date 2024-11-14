@@ -19,7 +19,6 @@ main
 					Delay_5500us
 					Delay_50us
 	teclaDigitada
-	LCDSenha
 		Lcd_Out
 			Lcd_Cmd
 				Delay_1us
@@ -30,3 +29,5 @@ main
 					Delay_1us
 					Delay_5500us
 					Delay_50us
+	strcmp
+	ascendeLed

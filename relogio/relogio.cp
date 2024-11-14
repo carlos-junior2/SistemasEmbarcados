@@ -1,4 +1,4 @@
-#line 1 "C:/relogio/relogio.c"
+#line 1 "C:/Users/junin/OneDrive/Área de Trabalho/UFLA/2024-2/Sistemas Embarcados/SistemasEmbarcados/relogio/relogio.c"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/stdio.h"
 #line 1 "c:/users/public/documents/mikroelektronika/mikroc pro for pic/include/string.h"
 
@@ -25,7 +25,7 @@ char * strpbrk(char * s1, char * s2);
 char * strrchr(char *ptr, char chr);
 char * strstr(char * s1, char * s2);
 char * strtok(char * s1, char * s2);
-#line 24 "C:/relogio/relogio.c"
+#line 24 "C:/Users/junin/OneDrive/Área de Trabalho/UFLA/2024-2/Sistemas Embarcados/SistemasEmbarcados/relogio/relogio.c"
 sbit LCD_RS at RE2_bit;
 sbit LCD_EN at RE1_bit;
 sbit LCD_D4 at RD4_bit;
