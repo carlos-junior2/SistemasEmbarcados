@@ -69,6 +69,7 @@ an6
 an6_bit
 an7
 an7_bit
+atualizavalor
 b0
 b1
 b2
@@ -169,6 +170,7 @@ clko
 clko_bit
 comfrem
 compare_double
+cont
 cren
 cren_bit
 cs

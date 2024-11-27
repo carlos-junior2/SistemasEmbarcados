@@ -1,8 +1,16 @@
 main
-	separarMil
-		Div_16X16_U
-		Div_16x16_S
-			Div_16x16_S_L
-	separarUni
-	mostrar
-		mask
+	__CC2DW
+	atualizaValor
+		separarMil
+			Div_16X16_U
+			Div_16x16_S
+				Div_16x16_S_L
+		separarCen
+			Div_16X16_U
+			Div_16x16_S
+				Div_16x16_S_L
+		separarDez
+			Div_16X16_U
+		separarUni
+		mostrar
+			mask

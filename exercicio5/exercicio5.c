@@ -1,23 +1,22 @@
 /*****************************************************************
-**                          Exemplo 05                          **
+**                          Exercício 05                        **
 **                                                              **
-**       Exemplo para utilizacao dos displays de 7 segmentos    **
-**       presente no kit PIC 18F452. Cada um dos 4 displays     **
-**       sÃ£o acessos, um de cada, vez, exibindo seu indice     **
-**       Ex: display 1 = 1, display 2 = 2, etc...               **
+**       Exercício realizado durante aula prática 05            **
+**       Temporizador Digital usando display 7 segmentos        **
 **                                                              **
-** Arquivo: display7seg.c                                       **
-** Compilador: MikroC PRO PIC v.6.4.0                           **
+** Arquivo: exercicio5.c                                        **
+** Compilador: MikroC PRO PIC v.7.2.0                           **
 **                                                              **
-** Obs: Ativar dips switchs: DISP1 a DISP4                      **
+** Aluno: Carlos Magno do Nascimento Junior                     **
 **                                                              **
-** UFLA - Lavras/MG - 12/07/2017                                **
+** UFLA - Lavras/MG - 27/11/2024                                **
 ******************************************************************/
 
 // Define o tempo de acendimento do display em ms.
 #define tempo 5
 
-int mil, cen, dez, uni;
+//Declaração de variáveis globais
+int mil, cen, dez, uni, cont=0;
 
 // Converte valor numerico decimal para codigo 7 segmentos
 unsigned short mask(unsigned short num)
@@ -37,6 +36,7 @@ unsigned short mask(unsigned short num)
   }
 }
 
+//função para mostrar valores no display
 void mostrar(unsigned short num1, unsigned short num2, unsigned short num3, unsigned short num4){
     // Escreve valor 1 no display 1 em codigo 7 segmentos.
     PORTD = mask(num1);
@@ -63,6 +63,7 @@ void mostrar(unsigned short num1, unsigned short num2, unsigned short num3, unsi
     porta.f5 = 0;     // desativa display 4.
 }
 
+//Decomponhe número inteiro em 4 números inteiros
 void separarMil(unsigned num){
    int resto;
    
@@ -77,19 +78,21 @@ void separarMil(unsigned num){
    uni = resto%10;
 }
 
+//Decomponhe número inteiro em 4 números inteiros
 void separarCen(unsigned num){
    int resto;
 
    mil = 0;
 
    cen = num/100;
-   resto = resto%100;
+   resto = num%100;
 
    dez = resto/10;
 
    uni = resto%10;
 }
 
+//Decomponhe número inteiro em 4 números inteiros
 void separarDez(unsigned num){
    int resto;
 
@@ -99,9 +102,10 @@ void separarDez(unsigned num){
    
    dez = num/10;
 
-   uni = resto%10;
+   uni = num%10;
 }
 
+//Decomponhe número inteiro em 4 números inteiros
 void separarUni(unsigned num){
    int resto;
 
@@ -114,9 +118,26 @@ void separarUni(unsigned num){
    uni = num;
 }
 
+//atualiza valor e mostra no display
+void atualizaValor(unsigned valorTempo){
+   if (valorTempo >= 1000){
+       separarMil(valorTempo);
+    }
+    else if (valorTempo >= 100 && valorTempo < 1000){
+       separarCen(valorTempo);
+    }
+    else if (valorTempo >= 10 && valorTempo < 100){
+       separarDez(valorTempo);
+    }
+    else{
+       separarUni(valorTempo);
+    }
+    mostrar(mil, cen, dez, uni);
+}
+
 void main(void)
 {
-  unsigned temp = 19;
+  unsigned valorTempo = 0;
   ADCON0 = 0X00;
   ADCON1 = 0X06;          // desabilita conversor A/D.
   INTCON = 0;            // desabilita interrupcoes.
@@ -124,22 +145,41 @@ void main(void)
   PORTA  = 0;
   TRISD  = 0;            // configura portD como saida.
   PORTD  = 0;
+  TRISB  = 7;
+  TRISC  = 0xFD; // 0b11111101
 
+   // Inicia com buzzer desligado.
+   portc.rc1 = 0;
   while(1)                         // inicio do loop infinito.
   {
-    if (temp >= 1000){
-       separarMil(temp);
+    atualizaValor(valorTempo);
+    if (portb.rb0 == 0){  //se botão RB0 for pressionado, incrementa valor do tempo
+       valorTempo += 1;
+       delay_ms(tempo);
     }
-    else if (tempo >= 100 && tempo < 1000){
-       separarCen(temp);
+    if (portb.rb1 == 0){ //se botão RB1 for pressionado, decrementa valor do tempo
+       valorTempo -= 1;
+       delay_ms(tempo);
     }
-    else if (tempo >= 10 && tempo < 100){
-       separarDez(temp);
-    }
-    else{
-       separarUni(temp);
-    }
-    mostrar(mil, cen, dez, uni);
-  } // Fim do loop infinito
 
+    if (portb.rb2 == 0){ //se botão RB1 for pressionado, incia a contagem regressiva até 0
+       while (valorTempo > 0){
+          while (cont < 45){  //atraso de 1s garantindo o display sempre aceso
+              atualizaValor(valorTempo);
+              cont+=1;
+           }
+          valorTempo -=1;
+          cont = 0;
+       }
+       if (valorTempo == 0){ //se o valor for 0
+          atualizaValor(valorTempo);
+          portc.rc1 = 1;    //toca buzzer
+          while (cont < 25){  //atraso de 1s garantindo o display sempre aceso
+              atualizaValor(valorTempo);
+              cont+=1;
+           }
+          portc.rc1 = 0;    //para buzzer
+       }
+    }
+  } // Fim do loop infinito
 }   // Fim do programa principal.
