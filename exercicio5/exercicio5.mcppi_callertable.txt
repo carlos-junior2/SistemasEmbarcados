@@ -1,0 +1,8 @@
+main
+	separarMil
+		Div_16X16_U
+		Div_16x16_S
+			Div_16x16_S_L
+	separarUni
+	mostrar
+		mask
